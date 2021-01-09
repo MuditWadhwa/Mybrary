@@ -18,7 +18,7 @@ app.use(express.static('public'));//use static pages from the public folder
 app.use(bodyParser.urlencoded({limit:'10mb',extended:false})); //set the limit of body-parser library and it reads only encoded urls
 
 const mongoose=require('mongoose');//import mongoose
-mongoose.connect(process.env.DATABASE_URL|| 'mongodb://localhost/mybrary',{useNewUrlParser:true,useUnifiedTopology:true}); //connect to mongoose server
+mongoose.connect(process.env.DATABASE_URL|| 'mongodb://localhost/webdevsimplifiedmerncourse',{useNewUrlParser:true,useUnifiedTopology:true}); //connect to mongoose server
 const db=mongoose.connection;
 db.on('error',error=>console.error(error));
 db.once('open',()=>console.log('Connected to mongoose'));
