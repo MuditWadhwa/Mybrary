@@ -1,8 +1,14 @@
 const express=require('express');
 const router=express.Router();
+const Book=require('../models/book');
 
-
-router.get('/',(req,res)=>{ //if the webpage with localhost:3000 is accessed,get the data after rendering it from index.ejs file
-    res.render('index');
+router.get('/',async (req,res)=>{ //if the webpage with localhost:3000 is accessed,get the data after rendering it from index.ejs file
+   let books;
+    try{
+    books=await Book.find().sort({createAt:'desc'}).limit(10).exec();
+   }catch{
+    books=[];
+   }
+    res.render('index',{books:books});
 });
 module.exports=router;
