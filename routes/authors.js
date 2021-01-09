@@ -28,7 +28,7 @@ router.get('/new',(req,res)=>{                     //if the url has /new in it a
 
 //create new author
 router.post('/',async (req,res)=>{ //if a new author is created in webpage with /new as a part of url,render the /create file
-   const author=Author({name:req.body.name})
+   const author=new Author({name:req.body.name})
    try{
     const newAuthor= await author.save();
     //res.redirect(`authors/${newAuthor.id}`);
